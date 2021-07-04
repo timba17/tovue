@@ -38,6 +38,14 @@
                   <v-list-item-title v-text="task.description"></v-list-item-title>
                 </v-list-item-content>
               </v-list-item>
+              <v-list-item>
+                <v-text-field
+                  label="New task"
+                  :rules="rules"
+                  hide-details="auto"
+                  v-model="newTask"
+                />
+              </v-list-item>
             </v-list-item-group>
           </v-list>
         </v-card>
@@ -48,36 +56,41 @@
 
 <script>
   export default {
-    name: 'HelloWorld',
+    name: 'ListComponent',
 
     data: () => ({
       tasks: [
         {
           id: 0,
-          isDone: false,
+          isCompleted: false,
           description: 'this is a description about task one'
         },
         {
           id: 1,
-          isDone: true,
+          isCompleted: true,
           description: 'this is a description about task two'
         },
         {
           id: 2,
-          isDone: false,
+          isCompleted: false,
           description: 'this is a description about task three'
         },
         {
           id: 3,
-          isDone: false,
+          isCompleted: false,
           description: 'this is a description about task four'
         },
         {
           id: 4,
-          isDone: true,
+          isCompleted: true,
           description: 'this is a description about task five'
         },
       ]
-    })
+    }),
+    methods: {
+      addNewTask() {
+        this.tasks.push(this.newTask.description)
+      }
+    }
   }
 </script>
